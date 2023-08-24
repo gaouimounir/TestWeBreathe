@@ -49,6 +49,9 @@ class Module{
         return new Module($unModule['id_module'], $unModule['nom'], $unModule['type'], $unModule['date_ajout'], $unModule['etat']);
     }
 
-    
-
+    static function updateModule($module){
+        $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
+        $query = $bdd->prepare('UPDATE module SET nom = :nom, type = :type, date_ajout = :date_ajout, etat = :etat WHERE id_module = :id_module');
+        $query->execute(array('nom' =>$module->getNom(), 'type' =>$module->getType(), 'date_ajout' =>$module->getDate_ajout(), 'etat' =>$module->getEtat()));
+    }
 }
