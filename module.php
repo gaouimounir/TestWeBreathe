@@ -55,3 +55,5 @@ class Module{
         $query->execute(array('nom' =>$module->getNom(), 'type' =>$module->getType(), 'date_ajout' =>$module->getDate_ajout(), 'etat' =>$module->getEtat()));
     }
 }
+
+?>
