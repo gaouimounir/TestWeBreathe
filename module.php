@@ -41,5 +41,14 @@ class Module{
     function setEtat($etat){
         $this->etat = $etat;
     }
+
+    static function getModuleById($id_module){
+        $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
+        $query = $bdd->query('SELECT * FROM module WHERE id_module = ' . $id_module);
+        $unModule = $query->fetch();
+        return new Module($unModule['id_module'], $unModule['nom'], $unModule['type'], $unModule['date_ajout'], $unModule['etat']);
+    }
+
     
+
 }
