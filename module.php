@@ -44,14 +44,14 @@ class Module{
 
     static function getModuleById($id_module){
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-        $query = $bdd->query('SELECT * FROM module WHERE id_module = ' . $id_module);
+        $query = $bdd->query('SELECT * FROM moduleit WHERE id_module = ' . $id_module);
         $unModule = $query->fetch();
         return new Module($unModule['id_module'], $unModule['nom'], $unModule['type'], $unModule['date_ajout'], $unModule['etat']);
     }
 
     static function updateModule($module){
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-        $query = $bdd->prepare('UPDATE module SET nom = :nom, type = :type, date_ajout = :date_ajout, etat = :etat WHERE id_module = :id_module');
+        $query = $bdd->prepare('UPDATE moduleit SET nom = :nom, type = :type, date_ajout = :date_ajout, etat = :etat WHERE id_module = :id_module');
         $query->execute(array('nom' =>$module->getNom(), 'type' =>$module->getType(), 'date_ajout' =>$module->getDate_ajout(), 'etat' =>$module->getEtat()));
     }
 }
