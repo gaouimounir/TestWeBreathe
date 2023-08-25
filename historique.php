@@ -40,5 +40,18 @@ class Historique{
         return $this->id_module;
     }
 
+    static function getHistoriqueById($id_historique){
+        $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
+        $query = $bdd->query('SELECT * FROM historique WHERE id_historique = ' . $id_historique);
+        $unHistorique = $query->fetch();
+        return new Historique($unHistorique['id_historique'], $unHistorique['time_value'], $unHistorique['valeur_mesurer'], $unHistorique['etat'], $unHistorique['id_module']);
+    }
+
+    static function updateHistorique($historique){
+        $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
+        $query = $bdd->prepare('UPDATE historique SET time_value = :time_value, valeur_mesurer = :valeur_mesurer, etat = :etat, id_module = :id_module WHERE id_historique = :id_historique');
+        $query->execute(array('time_value' =>$historique->getTime_value(), 'valeur_mesurer' =>$historique->getValeur_mesurer(), 'etat' =>$historique->getEtat(), 'id_module' =>$historique->getId_module));
+    }
+
 
     }
