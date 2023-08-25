@@ -42,6 +42,13 @@ class Module{
         $this->etat = $etat;
     }
 
+    static function addModule($nom, $type, $etat) {
+        $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
+        $query = $bdd->prepare('INSERT INTO moduleit (nom, type, date_ajout, etat) VALUES (:nom, :type, :date_ajout, :etat)');
+        $date_ajout = date('Y-m-d H:i:s');
+        $query->execute(array('nom' => $nom, 'type' => $type, 'date_ajout' => $date_ajout, 'etat' => $etat));
+    }
+
     static function getModuleById($id_module){
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
         $query = $bdd->query('SELECT * FROM moduleit WHERE id_module = ' . $id_module);
