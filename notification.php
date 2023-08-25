@@ -13,4 +13,23 @@ class Notification{
         $this->id_module = $id_module;
     }
 
+    function getId_notif(){
+        return $this->id_notif;
+    }
+    function getContenu_notif(){
+        return $this->contenu_notif;
+    }
+    function setContenu_notif($contenu_notif){
+        $this->contenu_notif = $contenu_notif;
+    }
+    function getTime_notif(){
+        return $this->time_notif;
+    }
+    function setTime_notif($time_notif){
+        $this->time_notif = $time_notif;
+    }
+    function getId_module(){
+        return $this->id_module;
+    }
+
     }
