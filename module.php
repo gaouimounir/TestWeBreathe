@@ -4,14 +4,16 @@ class Module{
     private $id_module;
     private $nom;
     private $type;
-    private $date_ajout;
+    private $mesure;
+    private $unite;
     private $etat;
 
-    function __construct($id_module, $nom, $type, $date_ajout, $etat){
+    function __construct($id_module, $nom, $type,$mesure, $unite, $etat){
         $this->id_module = $id_module;
         $this->nom = $nom;
         $this->type = $type;
-        $this->date_ajout = $date_ajout;
+        $this->mesure = $mesure;
+        $this->unite = $unite;
         $this->etat = $etat;
     }
     function getId_module(){
@@ -29,11 +31,17 @@ class Module{
     function setType($type){
         $this->type = $type;
     }
-    function getDate_ajout(){
-        return $this->date_ajout;
+    function getMesure(){
+        return $this->mesure;
     }
-    function setDate_ajout($date_ajout){
-        $this->date_ajout = $date_ajout;
+    function setMesure($type){
+        $this->type = $type;
+    }
+    function getUnite(){
+        return $this->unite;
+    }
+    function setUnite($unite){
+        $this->unite = $unite;
     }
     function getEtat(){
         return $this->etat;
@@ -44,22 +52,22 @@ class Module{
 
     static function addModule($nom, $type, $etat) {
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-        $query = $bdd->prepare('INSERT INTO moduleit (nom, type, date_ajout, etat) VALUES (:nom, :type, :date_ajout, :etat)');
-        $date_ajout = date('Y-m-d H:i:s');
-        $query->execute(array('nom' => $nom, 'type' => $type, 'date_ajout' => $date_ajout, 'etat' => $etat));
+        $query = $bdd->prepare('INSERT INTO module (nom, type, unite, etat) VALUES (:nom, :type, :unite, :etat)');
+        $unite = date('Y-m-d H:i:s');
+        $query->execute(array('nom' => $nom, 'type' => $type, 'unite' => $unite, 'etat' => $etat));
     }
 
     static function getModuleById($id_module){
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-        $query = $bdd->query('SELECT * FROM moduleit WHERE id_module = ' . $id_module);
+        $query = $bdd->query('SELECT * FROM module WHERE id_module = ' . $id_module);
         $unModule = $query->fetch();
-        return new Module($unModule['id_module'], $unModule['nom'], $unModule['type'], $unModule['date_ajout'], $unModule['etat']);
+        return new Module($unModule['id_module'], $unModule['nom'], $unModule['type'], $unModule['mesure'], $unModule['unite'], $unModule['etat']);
     }
 
     static function updateModule($module){
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-        $query = $bdd->prepare('UPDATE moduleit SET nom = :nom, type = :type, date_ajout = :date_ajout, etat = :etat WHERE id_module = :id_module');
-        $query->execute(array('nom' =>$module->getNom(), 'type' =>$module->getType(), 'date_ajout' =>$module->getDate_ajout(), 'etat' =>$module->getEtat()));
+        $query = $bdd->prepare('UPDATE module SET nom = :nom, type = :type, unite = :unite, etat = :etat WHERE id_module = :id_module');
+        $query->execute(array('nom' =>$module->getNom(), 'type' =>$module->getType(), 'unite' =>$module->getUnite(), 'etat' =>$module->getEtat()));
     }
 }
 
