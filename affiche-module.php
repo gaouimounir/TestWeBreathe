@@ -9,6 +9,7 @@ $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Affiche Module</title>
 </head>
 <body>
@@ -16,7 +17,7 @@ $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
     $recupModule = $bdd->query('SELECT * FROM module');
     while ($module = $recupModule->fetch()){
     ?>
-        <div>
+        <div class="module-liste">
             <ul>
                 <li>Nom: <?= $module['nom'];?></li>
                 <li>Type: <?= $module['type'];?></li>
