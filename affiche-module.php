@@ -1,7 +1,6 @@
 <?php
 include('module.php');
 $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-require_once('Modele/module.php');
 
 ?>
 

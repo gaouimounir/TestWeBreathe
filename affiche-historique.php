@@ -1,5 +1,5 @@
 <?php
-
+include('historique.php');
 $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
 
 ?>
@@ -13,7 +13,7 @@ $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
 </head>
 <body>
     <?php
-    $recupHistorique = $bdd->query('SELECT * FROM historique');
+    $recupHistorique = $bdd->query('SELECT * FROM historiquemodule');
     while ($historique = $recupHistorique->fetch()){
     ?>
         <div>
