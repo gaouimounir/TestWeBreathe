@@ -53,7 +53,7 @@ class Module{
     static function addModule($module) {
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
         $query = $bdd->prepare('INSERT INTO module (nom, type, mesure, unite, etat) VALUES (:nom, :type, :mesure, :unite, :etat)');
-        $query->execute(array('nom' => $module->getNom, 'type' => $module->getType, 'mesure' => $module->getMesure, 'unite' => $module->getUnite, 'etat' => $module->getEtat));
+        $query->execute(array('nom' => $module->getNom(), 'type' => $module->getType(), 'mesure' => $module->getMesure(), 'unite' => $module->getUnite(), 'etat' => $module->getEtat()));
     }
 
     static function getModuleById($id_module){

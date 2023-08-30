@@ -2,8 +2,8 @@
 include('module.php');
 
 $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-$queryExec = $bdd->query("SELECT * FROM module");
-$lesModules = $queryExec->fetchAll();
+$queryRecupModule = $bdd->query("SELECT * FROM module");
+$lesModules = $queryRecupModule->fetchAll();
 
     $tableauModule= array();
 
@@ -53,23 +53,35 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="submit" value="Inserer" id="inserer" >
 </form>
 
-    <?php
-    $recupModule = $bdd->query('SELECT * FROM module');
-    while ($module = $recupModule->fetch()){
-    ?>
-        <div class="module-liste">
-            <ul>
-                <li>Nom: <?= $module['nom'];?></li>
-                <li>Type: <?= $module['type'];?></li>
-                <li>Mesure : <?= $module['mesure'];?></li>
-                <li>Unite : <?= $module['unite'];?></li>
-                <li>Etat : <?= $module['etat'];?></li>
-            </ul>
-        </div>
+    
 
-      
-    <?php
-    }
-    ?>
+<table class="module-liste">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Type</th>
+                <th scope="col">Mesure</th>
+                <th scope="col">Unité</th>
+                <th scope="col">Etat</th> 
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($lesModules as $unModule) : ?>
+                <?php $mod = new Module($unModule['id_module'], $unModule['nom'], $unModule['type'], $unModule['mesure'],$unModule['unite'],$unModule['etat']); ?>
+                <tr>
+                    <td scope="row"><?php echo $mod->getId_module(); ?></td>
+                    <td><?php echo $mod->getNom(); ?></td>
+                    <td><?php echo $mod->getType(); ?></td>
+                    <td><?php echo $mod->getMesure(); ?></td>
+                    <td><?php echo $mod->getUnite(); ?></td>
+                    <td><?php echo $mod->getEtat(); ?></td>
+                    
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
 </body>
 </html>
