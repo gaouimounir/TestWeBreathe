@@ -50,11 +50,10 @@ class Module{
         $this->etat = $etat;
     }
 
-    static function addModule($nom, $type, $etat) {
+    static function addModule($module) {
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-        $query = $bdd->prepare('INSERT INTO module (nom, type, unite, etat) VALUES (:nom, :type, :unite, :etat)');
-        $unite = date('Y-m-d H:i:s');
-        $query->execute(array('nom' => $nom, 'type' => $type, 'unite' => $unite, 'etat' => $etat));
+        $query = $bdd->prepare('INSERT INTO module (nom, type, mesure, unite, etat) VALUES (:nom, :type, :mesure, :unite, :etat)');
+        $query->execute(array('nom' => $module->getNom, 'type' => $module->getType, 'mesure' => $module->getMesure, 'unite' => $module->getUnite, 'etat' => $module->getEtat));
     }
 
     static function getModuleById($id_module){

@@ -2,6 +2,17 @@
 include('module.php');
 $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
 
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nom= $_POST['nom'];
+    $type= $_POST['type'];
+    $mesure = $_POST['mesure'];
+    $unite = $_POST['unite'];
+    $etat = $_POST['etat'];
+    Module::addModule(new Module(null, $nom, $type, $mesure, $unite, $etat));
+    header('Location: index.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
