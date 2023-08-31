@@ -7,6 +7,10 @@ if(isset($_GET['id_module'])){
         //Vérifie que le formulare a été soumis
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $newNom= $_POST['nom'];
+        $newType= $_POST['type'];
+        $newMesure= $_POST['mesure'];
+        $newUnite= $_POST['unite'];
+        $newEtat= $_POST['etat'];
         Module::updateModule(new Module($_GET['id_module'], $newNom, $newType, $newMesure, $newUnite, $newEtat));
         header('Location: affiche-module.php');
         exit;

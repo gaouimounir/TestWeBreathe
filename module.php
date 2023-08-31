@@ -67,8 +67,8 @@ class Module{
 
     static function updateModule($module){
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-        $query = $bdd->prepare('UPDATE module SET nom = :nom, type = :type, unite = :unite, etat = :etat WHERE id_module = :id_module');
-        $query->execute(array('nom' =>$module->getNom(), 'type' =>$module->getType(), 'unite' =>$module->getUnite(), 'etat' =>$module->getEtat()));
+        $query = $bdd->prepare('UPDATE module SET nom = :nom, type = :type, mesure = :mesure, unite = :unite, etat = :etat WHERE id_module = :modif');
+        $query->execute(array('modif'=>$module->getId_module(),'nom' =>$module->getNom(), 'type' =>$module->getType(), 'mesure'=>$module->getMesure(), 'unite' =>$module->getUnite(), 'etat' =>$module->getEtat()));
     }
 
     function deleteModule(){
