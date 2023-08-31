@@ -13,7 +13,7 @@ $lesModules = $queryRecupModule->fetchAll();
         
         array_push($tableauModule,$monModule);
     }
-
+    
     //Vérifie que le formulare a été soumis
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -47,7 +47,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="mesure">Mesure : </label>
     <input type="text" id="mesure" name="mesure">
     <label for="unite">Unite : </label>
-    <input type="text" id="unite" name="unite">
+    <select name="unite" id="unite-select">
+                <option value=""selected>--Please choose an option--</option>
+                <option value="celsius">Degres celsius</option>
+                <option value="farhenheit">Degres farhenheit</option>
+                <option value="km/h">Vitesse en Km/h</option>
+                <option value="miles/h">Vitesse en Miles/h</option>
+            </select>
     <label for="etat">Etat : </label>
     <input type="text" id="etat" name="etat">
     <input type="submit" value="Inserer" id="inserer" >

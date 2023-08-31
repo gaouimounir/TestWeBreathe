@@ -36,8 +36,8 @@ class Module{
     function getMesure(){
         return $this->mesure;
     }
-    function setMesure($type){
-        $this->type = $type;
+    function setMesure($mesure){
+        $this->mesure = $mesure;
     }
     function getUnite(){
         return $this->unite;
