@@ -1,0 +1,16 @@
+<?php 
+include ('module.php');
+$bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
+if(isset($_GET['id_module'])){
+    $module = module::getModuleById($_GET['id_module']);
+    if($module){
+        //Vérifie que le formulare a été soumis
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $newNom= $_POST['nom'];
+        module::updateModule(new module($_GET['id_module'], $newNom, $newType, $newMesure, $newUnite,$newEtat));
+        header('Location: affiche-module.php');
+        exit;
+        } 
+    }
+}
+?>
