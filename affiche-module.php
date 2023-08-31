@@ -83,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </td>
 
                     <td>
-                        <a href="supprimer-module.php?id=<?php echo $mod->getId_module(); ?>">
+                        <a href="supprimer-module.php?id_module=<?php echo $mod->getId_module(); ?>">
                         <i class="bi bi-pencil-square"></i> Supprimer</a>
                     </td>
                     

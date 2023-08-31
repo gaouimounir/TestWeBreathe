@@ -1,7 +1,7 @@
 <?php 
 include ('module.php');
 $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-if(isset($_GET['id'])){
+if(isset($_GET['id_module'])){
     $module = Module::getModuleById($_GET['id_module']);
     if($module){
         //Vérifie que le formulare a été soumis
