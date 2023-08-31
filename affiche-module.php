@@ -77,10 +77,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <td><?php echo $mod->getMesure(); ?></td>
                     <td><?php echo $mod->getUnite(); ?></td>
                     <td><?php echo $mod->getEtat(); ?></td>
+
+                    <td><a href="modifier-module.php?id_module=<?php echo $mod->getId_module(); ?>">
+                        <i class="bi bi-pencil-square"></i> Modifier</a>
+                    </td>
+
                     <td>
-                        <a href="modifier-module.php?id_module=<?php echo $mod->getId_module(); ?>">
-                            <i class="bi bi-pencil-square"></i> Modifier
-                        </a>
+                        <a href="supprimer-module.php?id=<?php echo $mod->getId_module(); ?>">
+                        <i class="bi bi-pencil-square"></i> Supprimer</a>
                     </td>
                     
                 </tr>
