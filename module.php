@@ -1,5 +1,7 @@
 <?php
 
+use Module as GlobalModule;
+
 class Module{
     private $id_module;
     private $nom;
@@ -67,6 +69,12 @@ class Module{
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
         $query = $bdd->prepare('UPDATE module SET nom = :nom, type = :type, unite = :unite, etat = :etat WHERE id_module = :id_module');
         $query->execute(array('nom' =>$module->getNom(), 'type' =>$module->getType(), 'unite' =>$module->getUnite(), 'etat' =>$module->getEtat()));
+    }
+
+    function deleteModule(){
+        $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
+        $query= $bdd->prepare('DELETE FROM module WHERE id_module=:supp');
+        $query->execute(array('supp'=>$this->getId_module()));
     }
 }
 
