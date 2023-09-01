@@ -19,7 +19,7 @@ if(isset($_GET['id_module'])){
 </head>
 <body>
     <h1> Suppression de <?php echo $module->getNom(); ?> </h1>
-    <a href="affiche-module.php">Retour à la liste des modules</a>
+    <a href="index.php">Retour à la liste des modules</a>
 
 
 </body>

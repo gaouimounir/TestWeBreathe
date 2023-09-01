@@ -10,7 +10,7 @@ class Module{
     private $unite;
     private $etat;
 
-    function __construct($id_module, $nom, $type,$mesure, $unite, $etat){
+    function __construct($id_module, $nom, $type, $mesure, $unite, $etat){
         $this->id_module = $id_module;
         $this->nom = $nom;
         $this->type = $type;
@@ -52,7 +52,7 @@ class Module{
         $this->etat = $etat;
     }
 
-    static function addModule($module) {
+    static function createModule($module) {
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
         $query = $bdd->prepare('INSERT INTO module (nom, type, mesure, unite, etat) VALUES (:nom, :type, :mesure, :unite, :etat)');
         $query->execute(array('nom' => $module->getNom(), 'type' => $module->getType(), 'mesure' => $module->getMesure(), 'unite' => $module->getUnite(), 'etat' => $module->getEtat()));
@@ -60,7 +60,7 @@ class Module{
 
     static function getModuleById($id_module){
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost','root','');
-        $query = $bdd->query('SELECT * FROM module WHERE id_module = ' . $id_module);
+        $query = $bdd->query('SELECT * FROM module WHERE id_module = ' .$id_module);
         $unModule = $query->fetch();
         return new Module($unModule['id_module'], $unModule['nom'], $unModule['type'], $unModule['mesure'], $unModule['unite'], $unModule['etat']);
     }
@@ -76,6 +76,7 @@ class Module{
         $query= $bdd->prepare('DELETE FROM module WHERE id_module=:supp');
         $query->execute(array('supp'=>$this->getId_module()));
     }
+    
 }
 
 ?>

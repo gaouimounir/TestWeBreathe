@@ -12,7 +12,7 @@ if(isset($_GET['id_module'])){
         $newUnite= $_POST['unite'];
         $newEtat= $_POST['etat'];
         Module::updateModule(new Module($_GET['id_module'], $newNom, $newType, $newMesure, $newUnite, $newEtat));
-        header('Location: affiche-module.php');
+        header('Location: index.php');
         exit;
         } 
     }
@@ -28,6 +28,14 @@ if(isset($_GET['id_module'])){
 </head>
 <body>
     <h1> Modification de <?php echo $module->getNom(); ?> </h1>
+    
+    <?php echo $module->getId_module(); ?>
+                    <?php echo $module->getNom(); ?>
+                    <?php echo $module->getType(); ?>
+                    <?php echo $module->getMesure(); ?>
+                    <?php echo $module->getUnite(); ?>
+                    <?php echo $module->getEtat(); ?>
+
     <form method="POST" >
         <label for="nom">Nom : </label>
         <input type="text" id="nom" name="nom" value="<?php echo $module->getNom(); ?>">
