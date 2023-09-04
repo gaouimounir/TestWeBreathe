@@ -70,6 +70,7 @@ class Module
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost', 'root', '');
         $query = $bdd->prepare('INSERT INTO module (nom, type, mesure, unite, etat) VALUES (:nom, :type, :mesure, :unite, :etat)');
         $query->execute(array('nom' => $module->getNom(), 'type' => $module->getType(), 'mesure' => $module->getMesure(), 'unite' => $module->getUnite(), 'etat' => $module->getEtat()));
+        self::addToHistory($module->getId_module(), 'Ajout', 'Module créé');
     }
 
     static function getModuleById($id_module)
