@@ -86,6 +86,7 @@ class Module
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost', 'root', '');
         $query = $bdd->prepare('UPDATE module SET nom = :nom, type = :type, mesure = :mesure, unite = :unite, etat = :etat WHERE id_module = :modif');
         $query->execute(array('modif' => $module->getId_module(), 'nom' => $module->getNom(), 'type' => $module->getType(), 'mesure' => $module->getMesure(), 'unite' => $module->getUnite(), 'etat' => $module->getEtat()));
+        self::addToHistory($module->getId_module(), 'Modification', 'Module modifié');
     }
 
     function deleteModule()
