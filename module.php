@@ -1,4 +1,5 @@
 <?php
+include('historique.php');
 
 use Module as GlobalModule;
 
