@@ -50,12 +50,6 @@ class Historique
         return $this->id_module;
     }
 
-    static function addToHistory($module_id, $action, $description)
-    {
-        $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost', 'root', '');
-        $query = $bdd->prepare('INSERT INTO module_history (module_id, action, description, timestamp) VALUES (:module_id, :action, :description, NOW())');
-        $query->execute(array('module_id' => $module_id, 'action' => $action, 'description' => $description));
-    }
     static function getHistoriqueById($id_historique)
     {
         $bdd = new PDO('mysql:dbname=testwebreathe;host=localhost', 'root', '');
