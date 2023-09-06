@@ -1,4 +1,7 @@
-
+.intro{
+    display: flex;
+    flex-direction: row;
+}
 
 .module-liste{
     border: solid;

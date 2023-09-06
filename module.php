@@ -1,10 +1,10 @@
 <?php
-include('historique.php');
 
 use Module as GlobalModule;
 
 class Module
 {
+
     private $id_module;
     private $nom;
     private $type;

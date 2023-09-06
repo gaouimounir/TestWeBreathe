@@ -43,18 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
+    <div class="intro">
+        <h2>Affichage des Modules</h2>
 
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="affiche-historique.php">Historique</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-    </ul>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="affiche-historique.php">Historique</a>
+            </li>
+        </ul>
+    </div>
 
 
     <table class="module-liste">
